@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .layout {
+    display: flex;
+    height: 95vh; /* Full height */
+  }
+  
+  .sidebar {
+    width: 50px; /* Fixed width for the sidebar */
+    background: linear-gradient(360deg, #1ab8f7, #07186a); /* 180-degree linear gradient */
+    color: #ecf0f1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sidebar a {
+    font-size: 10px; /* Text size */
+  }
+
+  .sidebar i {
+    font-size: 24px; /* Default size for all icons */
+    display: block; /* Ensures the icons are displayed as block elements */
+  }
+  
+  /* Sidebar Links */
+  .sidebar a {
+    color: #ecf0f1;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column; /* Stack the icon and text vertically */
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ensures the icon takes the full width of the sidebar */
+    padding: 5px;
+  }
+  
+  /* Hover Effect for Sidebar Links */
+  .sidebar a:hover {
+    color: #87c1fa;
+    border-radius: 4px;
+  }
+  
+  /* Content Area */
+  .content {
+    flex-grow: 1; /* Takes up the remaining space */
+    padding: 20px;
+    overflow-y: auto; /* Scrollable content */
+    background-color: #f8f9fa;
+  }
+  
+  /* Header Styling */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .tabs {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .tabs div {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .active-tab {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .table-container th,
+  .table-container td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .table-container th {
+    background-color: #007bff;
+    color: white;
+  }
+  

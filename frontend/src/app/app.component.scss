@@ -1,0 +1,75 @@
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #1ab8f7, #07186a); /* Light blue to blue gradient */
+    color: white; /* White text and icons */
+  }
+  
+  .left, .center, .right {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Breadcrumb Styles */
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: white; /* White breadcrumb text */
+  }
+  
+  .breadcrumb-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .breadcrumb-link:hover {
+    text-decoration: underline;
+  }
+  
+  .breadcrumb-separator {
+    color: white;
+  }
+  
+  /* Right Side - Username and Icons */
+  .username {
+    margin-right: 10px;
+    font-weight: 500;
+    color: white; /* White text for the username */
+  }
+  
+  .profile-pic {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #07186a;
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 15px;
+  }
+  
+  .home-icon, .bell-icon, .star-icon, .settings-icon {
+    font-size: 18px;
+    margin-left: 15px;
+    color: white; /* White icons */
+    cursor: pointer;
+  }
+  
+  .home-icon:hover, .bell-icon:hover, .star-icon:hover, .settings-icon:hover {
+    color: #a2c2f1; /* Light blue on hover */
+  }
+  
+  .logo {
+    height: 30px;
+    margin-left: 10px;
+  }
+  
