@@ -38,27 +38,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>123 Elm Street</td>
-            <td>555-1234</td>
-            <td>john.doe&#64;example.com</td>
-            <td>Sales</td>
-            <td>Manager</td>
-            <td><i class="bi bi-person"></i> 2024-05-08 1.45PM</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>Jane</td>
-            <td>Smith</td>
-            <td>456 Oak Avenue</td>
-            <td>555-5678</td>
-            <td>jane.smith&#64;example.com</td>
-            <td>Marketing</td>
-            <td>Director</td>
-            <td><i class="bi bi-person"></i> 2024-03-08 2.10PM</td>
-            <td>2</td>
+          <tr *ngFor="let employee of employees">
+            <td>{{ employee.firstName }}</td>
+            <td>{{ employee.lastName }}</td>
+            <td>{{ employee.address }}</td>
+            <td>{{ employee.mobile }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.department }}</td>
+            <td>{{ employee.designation }}</td>
+            <td>
+              <i class="bi bi-person"></i>
+              {{ employee.updated | date : "yyyy-MM-dd h:mm a" }}
+            </td>
+            <td>{{ employee.number }}</td>
           </tr>
         </tbody>
       </table>
