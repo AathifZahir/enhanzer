@@ -38,7 +38,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let employee of employees">
+          <tr
+            *ngFor="let employee of employees"
+            (click)="openEditModal(employee)"
+          >
             <td>{{ employee.firstName }}</td>
             <td>{{ employee.lastName }}</td>
             <td>{{ employee.address }}</td>
@@ -46,14 +49,61 @@
             <td>{{ employee.email }}</td>
             <td>{{ employee.department }}</td>
             <td>{{ employee.designation }}</td>
-            <td>
-              <i class="bi bi-person"></i>
-              {{ employee.updated | date : "yyyy-MM-dd h:mm a" }}
-            </td>
-            <td>{{ employee.number }}</td>
+            <td>{{ employee.updated | date : "yyyy-MM-dd h:mm a" }}</td>
+            <td class="empnum">{{ employee.number }}</td>
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <!-- Modal for Editing Employee -->
+    <div class="modal" *ngIf="isModalOpen">
+      <div class="modal-content">
+        <h2>Edit Employee</h2>
+        <form (ngSubmit)="onSave()">
+          <label for="firstName">First Name:</label>
+          <input
+            id="firstName"
+            [(ngModel)]="employee.firstName"
+            name="firstName"
+            required
+          />
+
+          <label for="lastName">Last Name:</label>
+          <input
+            id="lastName"
+            [(ngModel)]="employee.lastName"
+            name="lastName"
+            required
+          />
+
+          <label for="address">Address:</label>
+          <input id="address" [(ngModel)]="employee.address" name="address" />
+
+          <label for="mobile">Mobile:</label>
+          <input id="mobile" [(ngModel)]="employee.mobile" name="mobile" />
+
+          <label for="email">Email:</label>
+          <input id="email" [(ngModel)]="employee.email" name="email" />
+
+          <label for="department">Department:</label>
+          <input
+            id="department"
+            [(ngModel)]="employee.department"
+            name="department"
+          />
+
+          <label for="designation">Designation:</label>
+          <input
+            id="designation"
+            [(ngModel)]="employee.designation"
+            name="designation"
+          />
+
+          <button type="submit" [disabled]="isSaving">Save</button>
+          <button type="button" (click)="closeModal()">Cancel</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

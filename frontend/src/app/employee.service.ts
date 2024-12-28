@@ -35,8 +35,9 @@ export class EmployeeService {
     return this.http.post<Employee>(this.apiUrl, employee);
   }
 
-  updateEmployee(id: number, employee: Employee): Observable<Employee> {
-    return this.http.put<Employee>(`${this.apiUrl}/${id}`, employee);
+  updateEmployee(employee: Employee): Observable<Employee> {
+    // This method now accepts the employee object, not just the ID.
+    return this.http.put<Employee>(`${this.apiUrl}/${employee.id}`, employee);
   }
 
   deleteEmployee(id: number): Observable<void> {
