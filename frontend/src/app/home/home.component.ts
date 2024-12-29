@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService, Employee } from '../employee.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';  // Import FormsModule
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FormsModule],  // Include FormsModule
+  imports: [CommonModule, FormsModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -14,6 +14,9 @@ export class HomeComponent implements OnInit {
   employee: Employee | null = null; // Change to nullable to handle undefined/null
   isModalOpen: boolean = false;
   isSaving: boolean = false;
+  page: number = 1; // Initial page number
+  pageSize: number = 10; // Number of items per page
+  totalPages: number = 1; // To store total pages count
 
   constructor(private employeeService: EmployeeService) {}
 
@@ -21,15 +24,25 @@ export class HomeComponent implements OnInit {
     this.loadEmployees();
   }
 
+  // Modify loadEmployees method to handle pagination
   loadEmployees(): void {
-    this.employeeService.getEmployees().subscribe(
+    this.employeeService.getEmployees(this.page, this.pageSize).subscribe(
       (data) => {
-        this.employees = data;
+        this.employees = data.employees;  // Assuming the API returns employees in 'employees' field
+        this.totalPages = data.totalPages; // Assuming the API returns totalPages
       },
       (error) => {
         console.error('Error fetching employee data:', error);
       }
     );
+  }
+
+  // Method to go to specific page
+  goToPage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.page = page;
+      this.loadEmployees();
+    }
   }
 
   openEditModal(employee: Employee): void {
@@ -66,8 +79,4 @@ export class HomeComponent implements OnInit {
       console.error("No employee data to save");
     }
   }
-  
-  
-  
-  
 }

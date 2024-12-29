@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Backend.Data;
 using Backend.Models;
@@ -18,9 +19,28 @@ public class EmployeesController : ControllerBase
 
     // GET: api/employees
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
+    public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
     {
-        return await _context.Employees.ToListAsync();
+        // Calculate the total number of employees
+        var totalEmployees = await _context.Employees.CountAsync();
+
+        // Calculate the employees to skip based on the page and pageSize
+        var employees = await _context.Employees
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+        // Create a response with pagination metadata
+        var response = new
+        {
+            TotalEmployees = totalEmployees,
+            Page = page,
+            PageSize = pageSize,
+            TotalPages = (int)Math.Ceiling((double)totalEmployees / pageSize),
+            Employees = employees
+        };
+
+        return Ok(response);
     }
 
     // GET: api/employees/5
@@ -45,6 +65,21 @@ public class EmployeesController : ControllerBase
         await _context.SaveChangesAsync();
 
         return CreatedAtAction(nameof(GetEmployee), new { id = employee.Id }, employee);
+    }
+
+    // POST: api/employees/bulk
+    [HttpPost("bulk")]
+    public async Task<ActionResult> PostEmployeesBulk(List<Employee> employees)
+    {
+        if (employees == null || employees.Count == 0)
+        {
+            return BadRequest("The employee list is empty or invalid.");
+        }
+
+        await _context.Employees.AddRangeAsync(employees);
+        await _context.SaveChangesAsync();
+
+        return Ok(new { message = $"{employees.Count} employees were successfully added." });
     }
 
     // PUT: api/employees/5

@@ -5,7 +5,7 @@ body {
   
   .layout {
     display: flex;
-    height: 95vh; /* Full height */
+    height: 92.1vh; /* Full height */
   }
   
   .sidebar {
@@ -24,7 +24,7 @@ body {
   }
 
   .sidebar i {
-    font-size: 24px; /* Default size for all icons */
+    font-size: 20px; /* Default size for all icons */
     display: block; /* Ensures the icons are displayed as block elements */
   }
   
@@ -185,4 +185,43 @@ button[type="button"]:hover {
   color: #007bff;
   cursor: pointer;
   text-decoration: underline;
+}
+
+/* Pagination Container */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Pagination Buttons */
+.pagination button {
+  padding: 8px 16px;
+  background-color: #007bff; /* Blue color */
+  color: white;
+  border: 1px solid #007bff; /* Matching border color */
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Disabled Buttons */
+.pagination button:disabled {
+  background-color: #b0d4ff;
+  border-color: #b0d4ff;
+  cursor: not-allowed;
+}
+
+/* Pagination Button Hover */
+.pagination button:hover:not(:disabled) {
+  background-color: #0056b3; /* Darker blue on hover */
+  border-color: #0056b3;
+}
+
+/* Pagination Text */
+.pagination span {
+  font-size: 14px;
+  color: #007bff; /* Blue text for pagination info */
 }

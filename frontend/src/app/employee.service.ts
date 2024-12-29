@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Employee {
@@ -23,8 +23,14 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) { }
 
-  getEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.apiUrl);
+  // Modified getEmployees method with pagination
+  getEmployees(page: number, pageSize: number): Observable<any> {
+    // Create HTTP parameters for pagination
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('pageSize', pageSize.toString());
+
+    return this.http.get<any>(this.apiUrl, { params });
   }
 
   getEmployee(id: number): Observable<Employee> {
@@ -36,7 +42,6 @@ export class EmployeeService {
   }
 
   updateEmployee(employee: Employee): Observable<Employee> {
-    // This method now accepts the employee object, not just the ID.
     return this.http.put<Employee>(`${this.apiUrl}/${employee.id}`, employee);
   }
 
