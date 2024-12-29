@@ -5,12 +5,12 @@ body {
   
   .layout {
     display: flex;
-    height: 92.1vh; /* Full height */
+    height: 92.1vh; 
   }
   
   .sidebar {
-    width: 50px; /* Fixed width for the sidebar */
-    background: linear-gradient(360deg, #1ab8f7, #07186a); /* 180-degree linear gradient */
+    width: 50px; 
+    background: linear-gradient(360deg, #1ab8f7, #07186a); 
     color: #ecf0f1;
     padding: 10px;
     display: flex;
@@ -20,41 +20,41 @@ body {
   }
 
   .sidebar a {
-    font-size: 10px; /* Text size */
+    font-size: 10px; 
   }
 
   .sidebar i {
-    font-size: 20px; /* Default size for all icons */
-    display: block; /* Ensures the icons are displayed as block elements */
+    font-size: 20px; 
+    display: block; 
   }
   
-  /* Sidebar Links */
+  
   .sidebar a {
     color: #ecf0f1;
     text-decoration: none;
     display: flex;
-    flex-direction: column; /* Stack the icon and text vertically */
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
-    width: 100%; /* Ensures the icon takes the full width of the sidebar */
+    width: 100%; 
     padding: 5px;
   }
   
-  /* Hover Effect for Sidebar Links */
+  
   .sidebar a:hover {
     color: #87c1fa;
     border-radius: 4px;
   }
   
-  /* Content Area */
+  
   .content {
-    flex-grow: 1; /* Takes up the remaining space */
+    flex-grow: 1; 
     padding: 20px;
-    overflow-y: auto; /* Scrollable content */
+    overflow-y: auto; 
     background-color: #f8f9fa;
   }
   
-  /* Header Styling */
+  
   .header {
     display: flex;
     justify-content: space-between;
@@ -97,7 +97,7 @@ body {
     color: white;
   }
   
-  /* Popup Styles */
+  
 .popup {
   position: fixed;
   top: 0;
@@ -187,7 +187,7 @@ button[type="button"]:hover {
   text-decoration: underline;
 }
 
-/* Pagination Container */
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -196,32 +196,32 @@ button[type="button"]:hover {
   margin-top: 20px;
 }
 
-/* Pagination Buttons */
+
 .pagination button {
   padding: 8px 16px;
-  background-color: #007bff; /* Blue color */
+  background-color: #007bff; 
   color: white;
-  border: 1px solid #007bff; /* Matching border color */
+  border: 1px solid #007bff; 
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
 }
 
-/* Disabled Buttons */
+
 .pagination button:disabled {
   background-color: #b0d4ff;
   border-color: #b0d4ff;
   cursor: not-allowed;
 }
 
-/* Pagination Button Hover */
+
 .pagination button:hover:not(:disabled) {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3; 
   border-color: #0056b3;
 }
 
-/* Pagination Text */
+
 .pagination span {
   font-size: 14px;
-  color: #007bff; /* Blue text for pagination info */
+  color: #007bff; 
 }

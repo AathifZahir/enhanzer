@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Backend.Models; // Replace `Backend` with your actual namespace
-
+using Backend.Models;
 namespace Backend.Data
 {
     public class ApplicationDbContext : DbContext

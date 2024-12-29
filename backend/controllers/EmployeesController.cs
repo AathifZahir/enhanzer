@@ -21,16 +21,16 @@ public class EmployeesController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
     {
-        // Calculate the total number of employees
+
         var totalEmployees = await _context.Employees.CountAsync();
 
-        // Calculate the employees to skip based on the page and pageSize
+
         var employees = await _context.Employees
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
 
-        // Create a response with pagination metadata
+
         var response = new
         {
             TotalEmployees = totalEmployees,
